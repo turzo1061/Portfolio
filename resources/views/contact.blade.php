@@ -6,102 +6,163 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    /* COMMON CSS */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0 20px;
-      background: linear-gradient(to right, #fceabb, #f8b500);
-      color: #333;
+      background: #121212;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
+
     nav {
       display: flex;
       justify-content: center;
-      background: linear-gradient(to right, #6a11cb, #2575fc);
-      padding: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      align-items: center;
+      background: #1e1e1e;
+      padding: 16px 30px;
+      box-shadow: 0 4px 12px rgba(255, 111, 0, 0.4);
+      width: 100%;
+      max-width: 900px;
+      border-radius: 12px;
+      margin: 30px 0 40px;
+      gap: 25px;
+      flex-wrap: wrap;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    nav a {
+      color: #ff6f00;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background-color: #ff6f00;
+      color: #121212;
+      box-shadow: 0 4px 15px rgba(255, 111, 0, 0.7);
+    }
+
+    .container {
+      background: #1e1e1e;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(255, 111, 0, 0.15);
+      max-width: 600px;
+      width: 100%;
+      margin-bottom: 60px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff6f00;
       margin-bottom: 30px;
     }
-    nav a {
-      color: #fff;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-    nav a:hover {
-      color: #ffe600;
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    form {
-      max-width: 400px;
-    }
+
     label {
       font-weight: 600;
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
+      color: #ccc;
     }
+
     input, textarea {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 20px;
+      background: #292929;
+      border: 1px solid #444;
+      color: #eee;
+      border-radius: 8px;
       font-size: 16px;
-      box-sizing: border-box;
+      outline: none;
+      transition: border 0.3s ease;
     }
+
+    input:focus,
+    textarea:focus {
+      border-color: #ff6f00;
+    }
+
     button {
-      background: #2ecc71;
-      color: white;
+      background: #ff6f00;
+      color: #121212;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 25px;
       cursor: pointer;
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 16px;
       font-weight: 600;
       transition: background 0.3s;
+      box-shadow: 0 6px 20px rgba(255, 111, 0, 0.3);
+      display: block;
+      margin: auto;
     }
+
     button:hover {
-      background: #27ae60;
+      background: #ffa040;
+      box-shadow: 0 8px 25px rgba(255, 111, 0, 0.5);
     }
-    a {
+
+    p a {
+      display: inline-block;
+      margin-top: 25px;
+      text-align: center;
+      width: 100%;
+      color: #ff6f00;
       text-decoration: none;
-      color: #2575fc;
-      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    p a:hover {
+      color: #ffa040;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+
+      .container {
+        padding: 25px;
+      }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="{{ url('/') }}">Home</a>
-  <a href="{{ url('/about') }}">About</a>
-  <a href="{{ url('/works') }}">Works</a>
-  <a href="{{ url('/contact') }}">Contact</a>
-</nav>
+  <nav>
+    <a href="{{ url('/') }}">Home</a>
+    <a href="{{ url('/about') }}">About</a>
+    <a href="{{ url('/works') }}">Works</a>
+    <a href="{{ url('/contact') }}">Contact</a>
+  </nav>
 
-<div class="container">
-  <h1>Contact Me</h1>
-  <form method="POST" action="#">
-    @csrf
-    <label for="name">Name:</label>
-    <input id="name" type="text" name="name" required />
-    <label for="email">Email:</label>
-    <input id="email" type="email" name="email" required />
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
-    <button type="submit">Send</button>
-  </form>
-  <p><a href="{{ url('/') }}">← Back to Home</a></p>
-</div>
+  <div class="container">
+    <h1>Contact Me</h1>
+    <form method="POST" action="#">
+      @csrf
+      <label for="name">Name:</label>
+      <input id="name" type="text" name="name" required />
+
+      <label for="email">Email:</label>
+      <input id="email" type="email" name="email" required />
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <p><a href="{{ url('/') }}">← Back to Home</a></p>
+  </div>
 
 </body>
 </html>

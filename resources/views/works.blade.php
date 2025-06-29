@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    /* COMMON CSS */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -58,10 +57,10 @@
       max-width: 900px;
       width: 100%;
       background: #1e1e1e;
-      padding: 35px 40px;
+      padding: 35px 50px;
       border-radius: 16px;
       box-shadow: 0 12px 30px rgba(255, 111, 0, 0.15);
-      margin-bottom: 60px;
+      margin-bottom: 40px;
       color: #eee;
     }
 
@@ -78,14 +77,14 @@
       font-size: 18px;
       color: #ccc;
       margin-bottom: 30px;
-      max-width: 650px;
+      max-width: 700px;
     }
 
     ul.projects {
       list-style: none;
       padding: 0;
       margin: 0;
-      max-width: 650px;
+      max-width: 700px;
     }
 
     ul.projects li {
@@ -95,15 +94,17 @@
       padding: 18px 20px;
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 20px;
       box-shadow: 0 8px 25px rgba(255, 111, 0, 0.1);
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
       cursor: default;
+      user-select: none;
     }
 
     ul.projects li:hover {
-      background-color: #ff6f0030;
-      box-shadow: 0 15px 40px rgba(255, 111, 0, 0.4);
+      background-color: #ff6f002e;
+      box-shadow: 0 15px 40px rgba(255, 111, 0, 0.45);
+      transform: translateY(-4px);
     }
 
     .project-name {
@@ -118,21 +119,25 @@
       height: 28px;
       fill: #ff6f00;
       flex-shrink: 0;
+      transition: filter 0.3s ease;
     }
 
-    /* Cart icon */
+    ul.projects li:hover .icon {
+      filter: drop-shadow(0 0 5px #ff6f00);
+    }
+
+    /* Cart icon specifics */
     .cart-icon {
-      margin-left: 6px;
       stroke: #ff6f00;
       stroke-width: 1.5;
       fill: none;
     }
 
-    /* Language icons */
+    /* Language / tag icons */
     .lang-icon {
-      width: 24px;
-      height: 24px;
-      border-radius: 4px;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
       background: #ff6f00;
       color: #121212;
       font-size: 14px;
@@ -143,6 +148,7 @@
       user-select: none;
       text-transform: uppercase;
       font-family: monospace;
+      padding: 0 6px;
     }
 
     /* Back to home link */
@@ -154,7 +160,7 @@
       text-decoration: none;
       font-size: 16px;
       border: 2px solid transparent;
-      padding: 8px 14px;
+      padding: 10px 18px;
       border-radius: 8px;
       transition: all 0.3s ease;
     }
@@ -166,6 +172,23 @@
       box-shadow: 0 4px 15px rgba(255, 111, 0, 0.7);
       border-color: #ff6f00;
       text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 30px;
+      padding: 20px 20px;
+      text-align: center;
+      color: #aaa;
+      font-size: 0.9rem;
+      border-top: 1px solid #2a2a2a;
+      user-select: none;
+    }
+
+    footer strong {
+      color: #ff6f00;
     }
 
     /* Responsive */
@@ -233,8 +256,13 @@
     </li>
 
   </ul>
-  <a href="{{ url('/') }}" class="back-link">← Back to Home</a>
+
+  <a href="{{ url('/') }}" class="back-link" aria-label="Back to home page">← Back to Home</a>
 </div>
+
+<footer>
+  &copy; 2025 <strong>Shovan Samanta Turzo</strong>. All rights reserved.
+</footer>
 
 </body>
 </html>
