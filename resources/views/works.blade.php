@@ -97,14 +97,33 @@
       gap: 20px;
       box-shadow: 0 8px 25px rgba(255, 111, 0, 0.1);
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
+      cursor: pointer;
       user-select: none;
+      position: relative;
+      overflow: hidden;
     }
 
     ul.projects li:hover {
       background-color: #ff6f002e;
       box-shadow: 0 15px 40px rgba(255, 111, 0, 0.45);
       transform: translateY(-4px);
+    }
+
+    /* Anchor fills entire li */
+    ul.projects li a.project-link {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+      text-indent: -9999px; /* hide link text */
+      background: transparent;
+    }
+
+    /* Content on top */
+    .project-name,
+    .icon,
+    .lang-icon {
+      position: relative;
+      z-index: 2;
     }
 
     .project-name {
@@ -149,6 +168,7 @@
       text-transform: uppercase;
       font-family: monospace;
       padding: 0 6px;
+      flex-shrink: 0;
     }
 
     /* Back to home link */
@@ -220,6 +240,7 @@
   <ul class="projects" aria-label="Projects list">
 
     <li>
+      <a href="https://yourportfolio.com" target="_blank" rel="noopener" class="project-link">Portfolio Website</a>
       <span class="project-name">Portfolio Website</span>
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" title="Language: HTML">
         <path fill="#ff6f00" d="M1.5 0h21l-1.9 21.5L12 24l-8.6-2.5L1.5 0zM17.8 6.7H6.2l.3 3h11l-.7 7.3-3.3.9-3.3-1v-2.4h2.7l.1.5 1.7-.5.1-2.3H6.1l-.2-2H18l-.2-2.2z"/>
@@ -227,6 +248,7 @@
     </li>
 
     <li>
+      <a href="https://bookingapp.example.com" target="_blank" rel="noopener" class="project-link">Mobile App for Booking</a>
       <span class="project-name">Mobile App for Booking</span>
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" title="Language: Flutter">
         <path fill="#ff6f00" d="M20.5 3L6.6 16.9l4.7 4.7 9.2-9.2-4.6-9.4zM11 20.4L7.7 17.1 2.8 22l6.2-1.6z"/>
@@ -234,6 +256,7 @@
     </li>
 
     <li>
+      <a href="https://ecommerce-ui.com" target="_blank" rel="noopener" class="project-link">E-commerce UI Design</a>
       <span class="project-name">E-commerce UI Design</span>
       <svg
         class="icon cart-icon"
