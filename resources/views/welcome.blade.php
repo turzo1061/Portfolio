@@ -306,10 +306,16 @@
   <body>
     <!-- Navigation -->
     <nav aria-label="Main Navigation">
-      <a href="/" aria-current="page">Home</a>
-      <a href="/about">About</a>
-      <a href="/works">Works</a>
-      <a href="/contact">Contact</a>
+      <a href="{{ url('/') }}">Home</a>
+      <a href="{{ url('/about') }}">About</a>
+      <a href="{{ url('/works') }}">Works</a>
+      <a href="{{ url('/contact') }}">Contact</a>
+      <a href="{{ url('/achievements') }}">Achievements</a>
+      <a href="{{ url('/education') }}">Education</a>
+      <a href="{{ url('/experiences') }}">Experiences</a>
+      <a href="{{ url('/skills') }}">Skills</a>
+      <a href="{{ url('/projects') }}">Projects</a>
+      <a href="{{ url('/infos') }}">Infos</a>
     </nav>
 
     <!-- Main Content -->
