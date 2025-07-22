@@ -52,3 +52,12 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 Route::post('/login', [AuthenticationController::class, 'login']);
+
+Route::get('/register', function () {
+    return view('auth.registration');
+});
+Route::post('/register', [AuthenticationController::class, 'register']);
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/admin/dashboard', [App\Http\Controllers\Controller::class, 'dashboard'])->name('dashboard');
+});
