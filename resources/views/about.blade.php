@@ -265,7 +265,7 @@
 
   <div class="intro">
     <div class="profile-image" aria-label="Profile photo of Shovan">
-      <img src="https://scontent.fzyl2-2.fna.fbcdn.net/v/t39.30808-1/427908708_3536605320003046_8333136275094364885_n.jpg?stp=cp6_dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=1d2534&_nc_ohc=fm1pP1U1WNEQ7kNvwF5EsOI&_nc_oc=AdmyHC4oxcggre1yPtGwqf2R2-FIftDCo7P45VBvzI20T9H9xqjU9DfbWO9NI8ChFEU&_nc_zt=24&_nc_ht=scontent.fzyl2-2.fna&_nc_gid=SGHTNAgOJ54gbUvDj8-reg&oh=00_AfP5xqJxEMpW7rCHZtLphjeKCV55EaoQKhEGUdRn0D9d_g&oe=68602E3F" alt="Shovan's Profile Photo" />
+      <img src="https://scontent.fdac5-2.fna.fbcdn.net/v/t39.30808-6/427908708_3536605320003046_8333136275094364885_n.jpg?stp=cp6_dst-jpg_p526x296_tt6&_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=t02XvP4J4nAQ7kNvwHqL3--&_nc_oc=AdkqDoyrhKnQZSkg24qsqm0GR88g5OeVM4XiKXOnFpbMT1FWPymJlycoKmmhZLvhvQM&_nc_zt=23&_nc_ht=scontent.fdac5-2.fna&_nc_gid=uypv7A3Yb3OdUmt4IySNGg&oh=00_AfVeBu0qih9SW5-FRRYvYZ61U0q3gHGvnRPDJbLkAlyMrQ&oe=68B0A9FD" />
     </div>
     <div class="intro-text">
       <p>Hello! I’m <strong>Shovan</strong>, a creative web and app developer with over 2 years of hands-on experience building modern, responsive, and user-friendly digital solutions.</p>

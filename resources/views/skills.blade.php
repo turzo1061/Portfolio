@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +5,7 @@
   <title>Skills</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -67,11 +65,11 @@
       text-align: center;
     }
     .skills-list {
+      margin-top: 30px;
       display: flex;
       flex-wrap: wrap;
       gap: 24px;
       justify-content: center;
-      margin-top: 30px;
     }
     .skill-item {
       background: #292929;
@@ -79,11 +77,11 @@
       padding: 24px 20px;
       box-shadow: 0 4px 15px rgba(255, 111, 0, 0.12);
       color: #eee;
-      width: 180px;
+      width: 320px;
       max-width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .skill-item:hover {
@@ -93,14 +91,50 @@
     .skill-item h3 {
       color: #ff6f00;
       margin-bottom: 10px;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 600;
     }
     .skill-item p {
       color: #bbb;
       margin-bottom: 0;
       font-size: 15px;
-      text-align: center;
+    }
+    .add-skill-form {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .add-skill-form input {
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: 1px solid #444;
+      background: #232323;
+      color: #eee;
+      font-size: 1rem;
+      outline: none;
+    }
+    .add-skill-form button {
+      background: #ff6f00;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 22px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .add-skill-form button:hover {
+      background: #ffa040;
+    }
+    .skill-icon {
+      font-size: 2rem;
+      margin-right: 12px;
+      color: #ff6f00;
+      flex-shrink: 0;
+      vertical-align: middle;
     }
     .back-link {
       display: inline-block;
@@ -137,6 +171,7 @@
 </head>
 <body>
 <nav>
+<nav>
   <a href="{{ url('/') }}">Home</a>
   <a href="{{ url('/about') }}">About</a>
   <a href="{{ url('/works') }}">Works</a>
@@ -150,28 +185,92 @@
 </nav>
 <div class="container">
   <h1>Skills</h1>
+  @if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+  @endif
+  <form action="{{ route('skills.store') }}" method="POST" class="add-skill-form">
+    @csrf
+    <input type="text" name="name" placeholder="Skill Name" required>
+    <input type="text" name="description" placeholder="Description">
+    <input type="text" name="level" placeholder="Expertise (e.g. Expert, Advanced)">
+    <button type="submit"><i class="fa fa-plus"></i> Add Skill</button>
+  </form>
   <div class="skills-list">
-    <div class="skill-item">
-      <h3>HTML & CSS</h3>
-      <p>Responsive layouts, Flexbox, Grid, Modern CSS</p>
-    </div>
-    <div class="skill-item">
-      <h3>JavaScript</h3>
-      <p>ES6+, DOM, AJAX, Vue.js basics</p>
-    </div>
-    <div class="skill-item">
-      <h3>PHP & Laravel</h3>
-      <p>REST APIs, MVC, Blade, Eloquent ORM</p>
-    </div>
-    <div class="skill-item">
-      <h3>MySQL</h3>
-      <p>Database design, queries, migrations</p>
-    </div>
-    <div class="skill-item">
-      <h3>Git & GitHub</h3>
-      <p>Version control, collaboration, open source</p>
-    </div>
-    <!-- Add more skills as needed -->
+    @forelse($skills as $skill)
+      <div class="skill-item">
+        @php
+          $icons = [
+            'php' => 'fa-brands fa-php',
+            'laravel' => 'fa-brands fa-laravel',
+            'javascript' => 'fa-brands fa-js',
+            'html' => 'fa-brands fa-html5',
+            'css' => 'fa-brands fa-css3-alt',
+            'mysql' => 'fa-solid fa-database',
+            'git' => 'fa-brands fa-git-alt',
+            'github' => 'fa-brands fa-github',
+            // fallback
+            'default' => 'fa-solid fa-code',
+          ];
+          $name = strtolower($skill->name);
+          $icon = $icons['default'];
+          foreach ($icons as $key => $val) {
+            if (str_contains($name, $key)) {
+              $icon = $val;
+              break;
+            }
+          }
+        @endphp
+        <i class="skill-icon fa {{ $icon }}"></i>
+        <div>
+          <h3>{{ $skill->name }}</h3>
+          <p>{{ $skill->description }}</p>
+          @if($skill->level)
+            <p><strong>Expertise:</strong> {{ $skill->level }}</p>
+          @endif
+        </div>
+      </div>
+    @empty
+      <div class="skill-item">
+        <i class="skill-icon fa-brands fa-php"></i>
+        <div>
+          <h3>PHP & Laravel</h3>
+          <p>REST APIs, MVC, Blade, Eloquent ORM</p>
+          <p><strong>Expertise:</strong> Expert</p>
+        </div>
+      </div>
+      <div class="skill-item">
+        <i class="skill-icon fa-brands fa-js"></i>
+        <div>
+          <h3>JavaScript</h3>
+          <p>ES6+, DOM, AJAX, Vue.js basics</p>
+          <p><strong>Expertise:</strong> Advanced</p>
+        </div>
+      </div>
+      <div class="skill-item">
+        <i class="skill-icon fa-brands fa-html5"></i>
+        <div>
+          <h3>HTML & CSS</h3>
+          <p>Responsive layouts, Flexbox, Grid, Modern CSS</p>
+          <p><strong>Expertise:</strong> Expert</p>
+        </div>
+      </div>
+      <div class="skill-item">
+        <i class="skill-icon fa-solid fa-database"></i>
+        <div>
+          <h3>MySQL</h3>
+          <p>Database design, queries, migrations</p>
+          <p><strong>Expertise:</strong> Advanced</p>
+        </div>
+      </div>
+      <div class="skill-item">
+        <i class="skill-icon fa-brands fa-git-alt"></i>
+        <div>
+          <h3>Git & GitHub</h3>
+          <p>Version control, collaboration, open source</p>
+          <p><strong>Expertise:</strong> Advanced</p>
+        </div>
+      </div>
+    @endforelse
   </div>
   <a href="{{ url('/') }}" class="back-link">← Back to Home</a>
 </div>

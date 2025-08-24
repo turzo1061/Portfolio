@@ -1,3 +1,4 @@
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 <?php
 ?>
 <!DOCTYPE html>
@@ -159,23 +160,42 @@
 </nav>
 <div class="container">
   <h1>Projects</h1>
+  @if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+  @endif
+  <form action="{{ route('projects.store') }}" method="POST" class="add-skill-form" style="margin-bottom: 2rem;">
+    @csrf
+    <input type="text" name="title" placeholder="Project Title" required>
+    <input type="text" name="description" placeholder="Description">
+    <input type="url" name="url" placeholder="Project URL">
+    <button type="submit"><i class="fa fa-plus"></i> Add Project</button>
+  </form>
   <div class="projects-list">
-    <div class="project-item">
-      <h3>Portfolio Website</h3>
-      <p>A personal portfolio website built with Laravel and Blade, showcasing my skills and projects.</p>
-      <a href="#" class="project-link" target="_blank">View Project</a>
-    </div>
-    <div class="project-item">
-      <h3>Task Manager App</h3>
-      <p>A simple task management application using Laravel and Vue.js for productivity tracking.</p>
-      <a href="#" class="project-link" target="_blank">View Project</a>
-    </div>
-    <div class="project-item">
-      <h3>Blog Platform</h3>
-      <p>A multi-user blog platform with authentication, built using Laravel and Bootstrap.</p>
-      <a href="#" class="project-link" target="_blank">View Project</a>
-    </div>
-    <!-- Add more projects as needed -->
+    @forelse($projects as $project)
+      <div class="project-item">
+        <h3><i class="fa fa-folder-open" style="color:#ff6f00;margin-right:10px;"></i>{{ $project->title }}</h3>
+        <p>{{ $project->description }}</p>
+        @if($project->url)
+          <a href="{{ $project->url }}" class="project-link" target="_blank"><i class="fa-brands fa-github"></i> View on GitHub</a>
+        @endif
+      </div>
+    @empty
+      <div class="project-item">
+        <h3><i class="fa fa-folder-open" style="color:#ff6f00;margin-right:10px;"></i>My Portfolio Website</h3>
+        <p>A personal portfolio website built with Laravel and Blade, showcasing my skills and projects.</p>
+        <a href="https://github.com/yourusername/portfolio" class="project-link" target="_blank"><i class="fa-brands fa-github"></i> View on GitHub</a>
+      </div>
+      <div class="project-item">
+        <h3><i class="fa fa-folder-open" style="color:#ff6f00;margin-right:10px;"></i>Task Manager App</h3>
+        <p>A simple task management application using Laravel and Vue.js for productivity tracking.</p>
+        <a href="https://github.com/yourusername/task-manager" class="project-link" target="_blank"><i class="fa-brands fa-github"></i> View on GitHub</a>
+      </div>
+      <div class="project-item">
+        <h3><i class="fa fa-folder-open" style="color:#ff6f00;margin-right:10px;"></i>Blog Platform</h3>
+        <p>A multi-user blog platform with authentication, built using Laravel and Bootstrap.</p>
+        <a href="https://github.com/yourusername/blog-platform" class="project-link" target="_blank"><i class="fa-brands fa-github"></i> View on GitHub</a>
+      </div>
+    @endforelse
   </div>
   <a href="{{ url('/') }}" class="back-link">← Back to Home</a>
 </div>

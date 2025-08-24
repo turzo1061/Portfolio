@@ -1,3 +1,4 @@
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 <?php
 ?>
 <!DOCTYPE html>
@@ -128,18 +129,41 @@
 </nav>
 <div class="container">
   <h1>Experiences</h1>
+  <form action="#" class="add-skill-form" style="margin-bottom: 2rem;">
+    <input type="text" placeholder="Experience Title" required>
+    <input type="text" placeholder="Duration">
+    <input type="text" placeholder="Description">
+    <button type="submit"><i class="fa fa-plus"></i> Add Experience</button>
+  </form>
   <div class="experience-list">
-    <div class="experience-item">
-      <h3>Intern Developer - ABC Tech</h3>
-      <p>June 2024 - August 2024</p>
-      <p>Worked on web application development using Laravel and Vue.js. Collaborated with a team to deliver a client project on time.</p>
-    </div>
-    <div class="experience-item">
-      <h3>Freelance Web Designer</h3>
-      <p>2023 - Present</p>
-      <p>Designed and developed responsive websites for small businesses and personal portfolios.</p>
-    </div>
-    <!-- Add more experiences as needed -->
+    @forelse($experiences as $experience)
+      <div class="experience-item">
+        <h3><i class="fa fa-briefcase" style="color:#ff6f00;margin-right:10px;"></i>{{ $experience->title }}</h3>
+        <p>{{ $experience->duration }}</p>
+        <p>{{ $experience->description }}</p>
+      </div>
+    @empty
+      <div class="experience-item">
+        <h3><i class="fa fa-briefcase" style="color:#ff6f00;margin-right:10px;"></i>Intern Developer - ABC Tech</h3>
+        <p>June 2024 - August 2024</p>
+        <p>Worked on web application development using Laravel and Vue.js. Collaborated with a team to deliver a client project on time.</p>
+      </div>
+      <div class="experience-item">
+        <h3><i class="fa fa-briefcase" style="color:#ff6f00;margin-right:10px;"></i>Freelance Web Designer</h3>
+        <p>2023 - Present</p>
+        <p>Designed and developed responsive websites for small businesses and personal portfolios.</p>
+      </div>
+      <div class="experience-item">
+        <h3><i class="fa fa-briefcase" style="color:#ff6f00;margin-right:10px;"></i>Open Source Contributor</h3>
+        <p>2022 - Present</p>
+        <p>Contributed to several open source projects on GitHub, improving community tools and documentation.</p>
+      </div>
+      <div class="experience-item">
+        <h3><i class="fa fa-briefcase" style="color:#ff6f00;margin-right:10px;"></i>Software Engineer - XYZ Solutions</h3>
+        <p>2021 - 2023</p>
+        <p>Developed scalable web applications and APIs for enterprise clients using Laravel and React.</p>
+      </div>
+    @endforelse
   </div>
   <a href="{{ url('/') }}" class="back-link">← Back to Home</a>
 </div>

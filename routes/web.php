@@ -2,6 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\EducationController;
+use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\InfoController;
+
+// Skill and Project submission routes
+Route::post('/skills', [SkillController::class, 'store'])->name('skills.store');
+Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,33 +29,17 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/achievements', function () {
-    return view('achievements');
-});
+Route::get('/achievements', [AchievementController::class, 'index']);
 
-Route::get('/education', function () {
-    return view('education');
-});
+Route::get('/education', [EducationController::class, 'index']);
 
-Route::get('/experiences', function () {
-    return view('experiences');
-});
+Route::get('/experiences', [ExperienceController::class, 'index']);
 
-Route::get('/projects', function () {
-    return view('projects');
-});
+Route::get('/projects', [ProjectController::class, 'index']);
 
-Route::get('/skills', function () {
-    return view('skills');
-});
+Route::get('/skills', [SkillController::class, 'index']);
 
-Route::get('/infos', function () {
-    return view('infos.blae');
-});
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
+Route::get('/infos', [InfoController::class, 'index']);
 
 // Auth routes
 Route::get('/login', function () {
@@ -61,3 +55,5 @@ Route::post('/register', [AuthenticationController::class, 'register']);
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/dashboard', [App\Http\Controllers\Controller::class, 'dashboard'])->name('dashboard');
 });
+
+

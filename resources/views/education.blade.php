@@ -129,14 +129,12 @@
 <div class="container">
   <h1>Education</h1>
   <div class="education-list">
-    <div class="education-item">
-      <h3>Srijanee Bidyaniketan</h3>
-      <p>School | GPA: 5.00</p>
-    </div>
-    <div class="education-item">
-      <h3>Govt Janata College</h3>
-      <p>College | GPA: 5.00</p>
-    </div>
+    @foreach($educations as $education)
+      <div class="education-item">
+        <h3>{{ $education->institution }}</h3>
+        <p>{{ $education->level }} | GPA: {{ $education->gpa }}</p>
+      </div>
+    @endforeach
   </div>
   <a href="{{ url('/') }}" class="back-link">← Back to Home</a>
 </div>

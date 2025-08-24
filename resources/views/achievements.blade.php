@@ -122,19 +122,37 @@
 <div class="container">
   <h1>Achievements</h1>
   <div class="achievement-list">
-    <div class="achievement-item">
-      <h3>Best Developer Award</h3>
-      <p>Received the Best Developer Award at XYZ Hackathon 2024 for innovative project delivery.</p>
-    </div>
-    <div class="achievement-item">
-      <h3>Top 10 Finalist</h3>
-      <p>Ranked among the top 10 in the National Coding Olympiad 2023.</p>
-    </div>
-    <div class="achievement-item">
-      <h3>Open Source Contributor</h3>
-      <p>Contributed to several open source projects on GitHub, improving community tools and documentation.</p>
-    </div>
-    <!-- Add more achievements as needed -->
+    @if(count($achievements) > 0)
+      @foreach($achievements as $achievement)
+        <div class="achievement-item">
+          <h3>{{ $achievement->title }}</h3>
+          <p>{{ $achievement->description }}</p>
+        </div>
+      @endforeach
+    @else
+      <div style="text-align:center; margin:40px 0; color:#aaa;">
+        <p>No achievements yet. Here are some sample achievements:</p>
+      </div>
+      <div class="achievement-item">
+        <h3>High School Topper</h3>
+        <p>Graduated as the top student in high school, excelling in academics and extracurricular activities.</p>
+      </div>
+      <div class="achievement-item">
+        <h3>College Science Fair Winner</h3>
+        <p>Won first place in the inter-college science fair for an innovative project on renewable energy.</p>
+      </div>
+      <div class="achievement-item">
+        <h3>University Gold Medalist</h3>
+        <p>Awarded the university gold medal for outstanding academic performance and leadership.</p>
+      </div>
+    @endif
+    <form action="{{ url('/achievements') }}" method="POST" style="margin-top:30px; background:#232323; padding:24px; border-radius:10px; box-shadow:0 2px 8px rgba(255,111,0,0.08);">
+      @csrf
+      <h3 style="color:#ff6f00; margin-bottom:12px;">Add Achievement</h3>
+      <input type="text" name="title" placeholder="Title" required style="width:100%;padding:10px;margin-bottom:10px;border-radius:6px;border:1px solid #444;background:#292929;color:#eee;">
+      <textarea name="description" placeholder="Description" required style="width:100%;padding:10px;margin-bottom:10px;border-radius:6px;border:1px solid #444;background:#292929;color:#eee;"></textarea>
+      <button type="submit" style="background:#ff6f00;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-weight:600;cursor:pointer;">Add Achievement</button>
+    </form>
   </div>
   <a href="{{ url('/') }}" class="back-link">← Back to Home</a>
 </div>

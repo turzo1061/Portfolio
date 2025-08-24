@@ -328,7 +328,7 @@
         </div>
         <figure class="profile-image">
           <img
-            src="https://scontent.fzyl2-2.fna.fbcdn.net/v/t39.30808-1/427908708_3536605320003046_8333136275094364885_n.jpg?stp=cp6_dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=1d2534&_nc_ohc=4vx24qw45aIQ7kNvwE-3USH&_nc_oc=AdmOH0BSkD2vt-0Ogu30Y0xRMFnZfw1GNcMbglNttpGP3hZ5bZP6byzommT0ZXL1pIs&_nc_zt=24&_nc_ht=scontent.fzyl2-2.fna&_nc_gid=R6tsShpnsKfjvXdrzV2QgQ&oh=00_AfMKOJrshhO3zAXbaK1tFkcv4M0nu8D44CjPeziwBxkgxg&oe=6866FDFF"
+            src="https://scontent.fdac5-2.fna.fbcdn.net/v/t39.30808-6/427908708_3536605320003046_8333136275094364885_n.jpg?stp=cp6_dst-jpg_p526x296_tt6&_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=t02XvP4J4nAQ7kNvwHqL3--&_nc_oc=AdkqDoyrhKnQZSkg24qsqm0GR88g5OeVM4XiKXOnFpbMT1FWPymJlycoKmmhZLvhvQM&_nc_zt=23&_nc_ht=scontent.fdac5-2.fna&_nc_gid=uypv7A3Yb3OdUmt4IySNGg&oh=00_AfVeBu0qih9SW5-FRRYvYZ61U0q3gHGvnRPDJbLkAlyMrQ&oe=68B0A9FD"
             alt="Portrait of Shovan Samanta"
           />
         </figure>
